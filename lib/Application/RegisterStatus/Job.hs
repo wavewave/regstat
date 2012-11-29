@@ -32,7 +32,7 @@ getDotRegstat = (</>) <$> (getEnv "HOME") <*> pure  ".regstat"
 registerIP :: String -> String -> IO () 
 registerIP k v = do 
     dotregstat <- getDotRegstat 
-    system ( "kvstore-client put " ++ k ++ " " ++ v ++ " --config="++dotregstat)
+    system ( "$HOME/.cabal/bin/kvstore-client put " ++ k ++ " " ++ v ++ " --config="++dotregstat)
     return ()
 
 getIP :: String -> IO (Maybe String) 
