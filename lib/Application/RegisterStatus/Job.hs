@@ -56,11 +56,6 @@ getIP k = do
                         fail ""  
             _ -> fail "" 
           
---      lift (print r)
---       return "" 
-
-
-
 mkSynergyConf :: [(String,String)] -> IO String 
 mkSynergyConf rset = do 
     datadir <- getDataDir 
@@ -82,6 +77,7 @@ startArch (Name k) = do
     -- print ipinfo 
     registerIP k ipinfo 
 
+
 startUbuntu :: Name -> IO () 
 startUbuntu (Name k) = do 
     putStrLn "ubuntu linux"
@@ -92,6 +88,30 @@ startUbuntu (Name k) = do
         ipinfo = dropWhile isSpace . head . splitOn " " $ (iplst !! 1) 
     print ipinfo 
     registerIP k ipinfo   
+
+startArchBlue :: Name -> IO () 
+startArchBlue (Name k) = do 
+    putStrLn "arch linux"
+    str <- readProcess "ip" ["addr"] "" 
+    let lst = splitOn "bnep0" str 
+        wlan0 = lst !! 1 
+        iplst = splitOn "inet" wlan0 
+        ipinfo = dropWhile isSpace . head . splitOn "/" $ (iplst !! 1) 
+    -- print ipinfo 
+    registerIP k ipinfo 
+
+startUbuntuBlue :: Name -> IO () 
+startUbuntuBlue (Name k) = do 
+    putStrLn "ubuntu linux blue"
+    str <- readProcess "ifconfig" [] "" 
+    let lst = splitOn "bnep0" str 
+        wlan0 = lst !! 1 
+        iplst = splitOn "inet addr:" wlan0 
+        ipinfo = dropWhile isSpace . head . splitOn " " $ (iplst !! 1) 
+    print ipinfo 
+    registerIP k ipinfo   
+
+
 
 startSynergys :: IO () 
 startSynergys = do 
