@@ -8,7 +8,7 @@ Author:		Ian-Woo Kim
 Maintainer: 	Ian-Woo Kim <ianwookim@gmail.com>
 Build-Type: 	Simple
 Cabal-Version:  >= 1.8
-data-files:     
+data-files:     template/*.conf.st
 
 
 Executable regstat
@@ -26,13 +26,23 @@ Library
   ghc-prof-options: -caf-all -auto-all
   Build-Depends: 
                    base>4, mtl>2, directory, filepath,
-                   cmdargs, split,
+                   cmdargs, 
+                   split, 
+                   text, 
+                   aeson >= 0.6, 
+                   unordered-containers,
+                   transformers >= 0.3, 
+                   HStringTemplate,
+                   HStringTemplateHelpersIW, 
+                   configurator,
+                   kvstore-client,
+                   http-types,
                    process
   Exposed-Modules: 
                    Application.RegisterStatus.ProgType
                    Application.RegisterStatus.Job
                    Application.RegisterStatus.Command
   Other-Modules: 
-
+                   Paths_regstat
  
 		 
