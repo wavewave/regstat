@@ -4,15 +4,17 @@ module Application.RegisterStatus.ProgType where
 
 import System.Console.CmdArgs
 
-data Regstat = Arch 
-             | Ubuntu 
+newtype Name = Name String 
+
+data Regstat = Arch { regname :: String } 
+             | Ubuntu { regname :: String } 
               deriving (Show,Data,Typeable)
 
 arch :: Regstat
-arch = Arch
+arch = Arch { regname = "" &= typ "NAME" &= argPos 0 } 
 
 ubuntu :: Regstat
-ubuntu = Ubuntu 
+ubuntu = Ubuntu { regname = "" &= typ "NAME" &= argPos 0 } 
 
 mode = modes [arch, ubuntu]
 

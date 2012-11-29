@@ -4,5 +4,5 @@ import Application.RegisterStatus.ProgType
 import Application.RegisterStatus.Job
 
 commandLineProcess :: Regstat -> IO ()
-commandLineProcess Arch = startArch
-commandLineProcess Ubuntu = startUbuntu 
+commandLineProcess (Arch n) = startArch (Name n)
+commandLineProcess (Ubuntu n) = startUbuntu (Name n)
