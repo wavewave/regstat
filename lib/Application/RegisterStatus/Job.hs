@@ -17,7 +17,8 @@ import System.Environment
 import System.FilePath
 import System.Process 
 import Text.StringTemplate
-import Text.StringTemplate.Helpers
+-- import Text.StringTemplate.Helpers
+import Bindings.Cxx.Generate.Util
 -- 
 import Application.KVStore.Client.Config
 import Application.KVStore.Client.Job
