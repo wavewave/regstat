@@ -90,6 +90,18 @@ startUbuntu (Name k) = do
     print ipinfo 
     registerIP k ipinfo   
 
+startIMac :: Name -> IO () 
+startIMac (Name k) = do 
+    putStrLn "imac debian linux"
+    str <- readProcess "/sbin/ifconfig" [] "" 
+    let lst = splitOn "wlan0" str 
+        wlan0 = lst !! 1 
+        iplst = splitOn "inet addr:" wlan0 
+        ipinfo = dropWhile isSpace . head . splitOn " " $ (iplst !! 1) 
+    print ipinfo 
+    registerIP k ipinfo   
+
+
 startArchBlue :: Name -> IO () 
 startArchBlue (Name k) = do 
     putStrLn "arch linux"

@@ -8,6 +8,7 @@ newtype Name = Name String
 
 data Regstat = Arch { regname :: String } 
              | Ubuntu { regname :: String }
+             | IMac { regname :: String } 
              | ArchBlue { regname :: String } 
              | UbuntuBlue { regname :: String } 
              | Synergys 
@@ -19,6 +20,9 @@ arch = Arch { regname = "" &= typ "NAME" &= argPos 0 }
 
 ubuntu :: Regstat
 ubuntu = Ubuntu { regname = "" &= typ "NAME" &= argPos 0 } 
+
+imac :: Regstat
+imac = IMac { regname = "" &= typ "NAME" &= argPos 0 } 
 
 archblue :: Regstat
 archblue = ArchBlue { regname = "" &= typ "NAME" &= argPos 0 } 
@@ -33,5 +37,5 @@ synergyc :: Regstat
 synergyc = Synergyc
 
 
-mode = modes [arch, ubuntu, archblue, ubuntublue, synergys, synergyc]
+mode = modes [arch, ubuntu, imac, archblue, ubuntublue, synergys, synergyc]
 
