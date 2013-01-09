@@ -10,4 +10,4 @@ commandLineProcess (IMac n) = startIMac (Name n)
 commandLineProcess (ArchBlue n) = startArchBlue (Name n)
 commandLineProcess (UbuntuBlue n) = startUbuntuBlue (Name n)
 commandLineProcess Synergys = startSynergys
-commandLineProcess Synergyc = startSynergyc
+commandLineProcess (Synergyc n) = startSynergyc (Name n)

@@ -12,7 +12,7 @@ data Regstat = Arch { regname :: String }
              | ArchBlue { regname :: String } 
              | UbuntuBlue { regname :: String } 
              | Synergys 
-             | Synergyc 
+             | Synergyc { regname :: String } 
               deriving (Show,Data,Typeable)
 
 arch :: Regstat
@@ -34,7 +34,7 @@ synergys :: Regstat
 synergys = Synergys
 
 synergyc :: Regstat 
-synergyc = Synergyc
+synergyc = Synergyc { regname = "" &= typ "NAME" &= argPos 0 } 
 
 
 mode = modes [arch, ubuntu, imac, archblue, ubuntublue, synergys, synergyc]

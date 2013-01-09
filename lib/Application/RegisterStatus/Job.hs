@@ -149,12 +149,12 @@ startSynergys = do
       return () 
     return () 
 
-startSynergyc :: IO () 
-startSynergyc = do 
+startSynergyc :: Name -> IO () 
+startSynergyc (Name k)= do 
     putStrLn "synergyc" 
     runMaybeT $ do 
       ip1 <- MaybeT $ getIP "macbook"
-      lift $ system ("synergyc -n slate " ++ ip1)
+      lift $ system ("synergyc -n " ++ k ++ " " ++ ip1)
       return () 
     return () 
 
