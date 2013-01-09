@@ -122,10 +122,14 @@ startSynergys = do
     runMaybeT $ do 
       ip1 <- MaybeT $ getIP "macbook"
       ip2 <- MaybeT $ getIP "slate" 
+      ip3 <- MaybeT $ getIP "imac"
       let rset = [ ("left","macbook")
                  , ("right","slate")
+                 , ("up","imac")
                  , ("leftip",ip1)
-                 , ("rightip",ip2) ] 
+                 , ("rightip",ip2) 
+                 , ("upip",ip3)
+                 ] 
       str <- lift $ mkSynergyConf rset
 
       lift $ writeFile synergyconf str 
